@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 앱</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 메인 메뉴 -->
+        <div class="screen" id="main-menu">
+            <h1>퀴즈 앱</h1>
+            <button onclick="showScreen('quiz-create')">퀴즈 만들기</button>
+            <button onclick="showScreen('quiz-select')">퀴즈 풀기</button>
+            <button onclick="fetchQuizzes()">새 퀴즈 가져오기</button>
+        </div>
+
+        <!-- 퀴즈 생성 화면 -->
+        <div class="screen" id="quiz-create" style="display: none;">
+            <h2>퀴즈 만들기</h2>
+            <form id="quiz-form">
+                <input type="text" id="subject" placeholder="과목명" required>
+                <textarea id="question" placeholder="질문 내용" required></textarea>
+                <input type="text" id="option1" placeholder="보기 1" required>
+                <input type="text" id="option2" placeholder="보기 2" required>
+                <input type="text" id="option3" placeholder="보기 3" required>
+                <input type="text" id="option4" placeholder="보기 4" required>
+                <select id="correct-answer" required>
+                    <option value="">정답 선택</option>
+                    <option value="1">보기 1</option>
+                    <option value="2">보기 2</option>
+                    <option value="3">보기 3</option>
+                    <option value="4">보기 4</option>
+                </select>
+                <button type="submit">퀴즈 저장</button>
+            </form>
+            <button onclick="showScreen('main-menu')">메인으로</button>
+        </div>
+
+        <!-- 과목 선택 화면 -->
+        <div class="screen" id="quiz-select" style="display: none;">
+            <h2>과목 선택</h2>
+            <div id="subject-list"></div>
+            <button onclick="showScreen('main-menu')">메인으로</button>
+        </div>
+
+        <!-- 퀴즈 풀이 화면 -->
+        <div class="screen" id="quiz-solve" style="display: none;">
+            <h2 id="current-subject"></h2>
+            <div id="quiz-container">
+                <p id="question-text"></p>
+                <div id="options-container"></div>
+            </div>
+            <div id="feedback"></div>
+            <button onclick="nextQuestion()" id="next-btn" style="display: none;">다음 문제</button>
+            <button onclick="showScreen('main-menu')">메인으로</button>
+        </div>
+
+        <!-- 결과 화면 -->
+        <div class="screen" id="quiz-result" style="display: none;">
+            <h2>퀴즈 결과</h2>
+            <div id="result-stats">
+                <p>맞힌 문제: <span id="correct-count">0</span></p>
+                <p>총 문제 수: <span id="total-count">0</span></p>
+                <p>정답률: <span id="accuracy">0</span>%</p>
+            </div>
+            <button onclick="showScreen('main-menu')">메인으로</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
