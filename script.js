@@ -269,7 +269,7 @@ window.addEventListener('load', function() {
 // fetchQuizzes 함수 수정
 async function fetchQuizzes() {
     try {
-        const OPENAI_API_KEY = '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'; // 여기에 OpenAI API 키를 입력하세요
+        const OPENAI_API_KEY = 'API KEY 입력'; // 여기에 OpenAI API 키를 입력하세요
         const subjects = ["한국사", "상식", "과학"];
         const newQuizzes = [];
         
